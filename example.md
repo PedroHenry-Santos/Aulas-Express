@@ -17,3 +17,13 @@
  - Body params (+) (POST, PUT, PATCH) - Ele e utilizado para enviar dados
  - Header - Passar configurações/autorização para o servidor. Ex.: Token de autenticação, a linguagem escolhida, formato da resposta etc...
  - Cookies - Preferencia de usuário
+
+ SERVICES:
+
+ 1. Students
+
+  - Criar o estudante - POST
+  - Listar os estudantes - GET
+  - Trazer **somente um** estudante - GET(**:id**)
+  - Atualizar **um** estudante - PUT(**:id**)
+  - Apagar **um** estudante - DELETE(**:id**)

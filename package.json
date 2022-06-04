@@ -4,7 +4,7 @@
   "description": "Aula de JavaScript",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --inspect --transpile-only --ignore-watch node_modules --no-notify src/index.ts"
+    "dev": "ts-node-dev --respawn --inspect --transpile-only --ignore-watch node_modules --no-notify src/shared/server.ts"
   },
   "keywords": [
     "JavaScript",
