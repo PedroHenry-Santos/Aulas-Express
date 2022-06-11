@@ -9,7 +9,7 @@ const AppDataSource = new DataSource({
   password: "docker",
   database: "school",
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: [Student],
   subscribers: [],
   migrations: [],

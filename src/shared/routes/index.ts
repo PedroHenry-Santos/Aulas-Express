@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { NextFunction, Request, Response, Router } from 'express';
 import StudentRoutes from '../../modules/Student/routes/students.route';
 
 const routes = Router();
