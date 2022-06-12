@@ -4,6 +4,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import Router from './routes';
 import AppDataSource from './typeorm';
 import { AppError } from './errors/AppError';
+import { errors } from 'celebrate'
 
 
 AppDataSource.initialize().then(() => {
@@ -14,8 +15,11 @@ AppDataSource.initialize().then(() => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', '*');
+
+    next();
   })
   app.use(Router);
+  app.use(errors());
   app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     
     if (error instanceof AppError) {

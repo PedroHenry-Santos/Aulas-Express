@@ -7,10 +7,6 @@ export default class CreateStudentService {
   constructor(private repository: IStudentRepository) {}
 
   public async execute({ age , name}: ICreateStudent) {
-    if (!age || !name) {
-      throw new AppError('Dados estão errados')
-    }
-
     const hash = createHash('sha256').digest('hex');
     const createStudent = this.repository.create({age , name, hash})
     const student = await this.repository.save(createStudent);
