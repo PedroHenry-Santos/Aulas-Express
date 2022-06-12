@@ -7,7 +7,7 @@ export default class DeleteStudentService {
   public async execute(id: string) {
     const student = await this.repository.findById(id);
     if (!student) {
-      throw new AppError('Estudante nao existe!')
+      throw new AppError('Estudante nao existe!', 404)
     }
     await this.repository.remove(student);
     return student;

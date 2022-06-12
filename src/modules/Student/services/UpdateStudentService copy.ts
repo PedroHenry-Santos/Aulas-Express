@@ -8,7 +8,7 @@ export default class UpdateStudentService {
   public async execute(id: string, data: IShowStudent) {
     const student = await this.repository.findById(id);
     if (!student) {
-      throw new AppError('Estudante nao existe!')
+      throw new AppError('Estudante nao existe!', 404)
     }
     await this.repository.update(id, data);
     return await this.repository.findById(id);

@@ -14,7 +14,7 @@ export default class StudentsController {
 
     const students = await listStudentsService.execute();
 
-    return response.json(students);
+    return response.status(200).json(students);
   }
 
   public async show(request: Request, response: Response) {
@@ -26,7 +26,7 @@ export default class StudentsController {
 
     const student = await showStudentService.execute(id);
 
-    return response.json(student);
+    return response.status(200).json(student);
   }
 
   public async create(request: Request, response: Response) {
@@ -38,7 +38,7 @@ export default class StudentsController {
 
     const student = await createStudentService.execute({ name, age })
 
-    return response.json(student);
+    return response.status(201).json(student);
   }
 
   public async update(request: Request, response: Response) {
@@ -51,7 +51,7 @@ export default class StudentsController {
 
     const student = await updateStudentService.execute(id, { name, age });
 
-    return response.json(student);
+    return response.status(200).json(student);
   }
 
   public async delete(request: Request, response: Response) {
@@ -64,7 +64,7 @@ export default class StudentsController {
 
     const student = await deleteStudentService.execute(id);
 
-    return response.json(student);
+    return response.status(200).json(student);
   }
   
 }
