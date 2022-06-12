@@ -14,7 +14,9 @@ routes.post('/', celebrate({
 routes.get('/', studentsController.index)
 routes.get('/:id', celebrate({
   [Segments.PARAMS]: {
-    id: Joi.string().required()
+    id: Joi.string().uuid({
+      version: 'uuidv4'
+    }).required()
   }
 }), studentsController.show)
 routes.put('/:id', celebrate({
@@ -23,12 +25,16 @@ routes.put('/:id', celebrate({
     age: Joi.number().optional()
   },
   [Segments.PARAMS]: {
-    id: Joi.string().required()
+    id: Joi.string().uuid({
+      version: 'uuidv4'
+    }).required()
   }
 }) , studentsController.update)
 routes.delete('/:id', celebrate({
   [Segments.PARAMS]: {
-    id: Joi.string().required()
+    id: Joi.string().uuid({
+      version: 'uuidv4'
+    }).required()
   }
 }), studentsController.delete)
 
