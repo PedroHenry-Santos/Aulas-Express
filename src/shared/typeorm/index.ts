@@ -1,5 +1,7 @@
 import { DataSource } from 'typeorm'
+import { Room } from '../../modules/Room/typeorm/entities/Room';
 import { Student } from '../../modules/Student/typeorm/entities/Student';
+import { Teacher } from '../../modules/Teacher/typeorm/entities/Teacher';
 
 const AppDataSource = new DataSource({
   type: "postgres",
@@ -10,7 +12,7 @@ const AppDataSource = new DataSource({
   database: "school",
   synchronize: true,
   logging: false,
-  entities: [Student],
+  entities: [Student, Room, Teacher],
   subscribers: [],
   migrations: [],
 }) 

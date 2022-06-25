@@ -12,7 +12,9 @@ export class RoomRepository implements IRoomRepository {
   }
 
   findAll(): Promise<Room[]> {
-    return this.ormRepository.find();
+    return this.ormRepository.find({
+      relations: ['teacher', 'students']
+    });
   }
   findById(id: string): Promise<Room | null> {
     return this.ormRepository.findOne({

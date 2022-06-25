@@ -1,5 +1,6 @@
 import { ITeacher } from "../../domain/service-models/ITeacher";
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,UpdateDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,UpdateDateColumn, OneToMany } from "typeorm"
+import { Room } from "../../../Room/typeorm/entities/Room";
 
 
 @Entity()
@@ -21,4 +22,8 @@ export class Teacher implements ITeacher {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  
+  @OneToMany(() => Room, (room) => room.teacher)
+  rooms!: Room[];
 }

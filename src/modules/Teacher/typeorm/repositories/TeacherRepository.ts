@@ -14,7 +14,9 @@ export class TeacherRepository implements ITeacherRepository {
   }
 
   findAll(): Promise<Teacher[]> {
-    return this.ormRepository.find();
+    return this.ormRepository.find({
+      relations: ['rooms']
+    });
   }
   findById(id: string): Promise<Teacher | null> {
     return this.ormRepository.findOne({
@@ -30,7 +32,7 @@ export class TeacherRepository implements ITeacherRepository {
   async update(id: string, data: Partial<ICreateTeacherRepository>): Promise<void> {
     await  this.ormRepository.update(id, data);
   }
-  remove(data: ITeacher): Promise<ITeacher> {
+  remove(data: Teacher): Promise<ITeacher> {
     return this.ormRepository.remove(data);
   }
 }

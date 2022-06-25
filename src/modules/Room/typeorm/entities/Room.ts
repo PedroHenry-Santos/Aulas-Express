@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,UpdateDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,UpdateDateColumn, OneToMany, ManyToOne } from "typeorm"
+import { Student } from "../../../Student/typeorm/entities/Student";
+import { Teacher } from "../../../Teacher/typeorm/entities/Teacher";
 import { IRoom } from "../../domain/service-models/IRoom";
 
 
@@ -15,6 +17,12 @@ export class Room implements IRoom {
 
   @CreateDateColumn()
   createdAt!: Date;
+
+  @OneToMany(() => Student,  (student) => student.room)
+  students!: Student[];
+
+  @ManyToOne(() => Teacher, (teacher) => teacher.rooms)
+  teacher!: Teacher;
 
   @UpdateDateColumn()
   updatedAt!: Date;
