@@ -5,6 +5,7 @@ import DeleteStudentService from '../services/DeleteStudentService';
 import ListStudentsService from '../services/ListStudentsService';
 import ShowStudentService from '../services/ShowStudentService copy 2';
 import UpdateStudentService from '../services/UpdateStudentService copy';
+import { RoomRepository } from '../../Room/typeorm/repositories/RoomRepository';
 
 export default class StudentsController {
   public async index(request: Request, response: Response) {
@@ -32,9 +33,10 @@ export default class StudentsController {
   public async create(request: Request, response: Response) {
     const { name, age, roomId } = request.body;
 
-    const studentRepository = new StudentRepository()
+    const studentRepository = new StudentRepository();
+    const roomRepository = new RoomRepository();
 
-    const createStudentService = new CreateStudentService(studentRepository);
+    const createStudentService = new CreateStudentService(studentRepository, roomRepository);
 
     const student = await createStudentService.execute({ name, age, roomId })
 
@@ -45,9 +47,10 @@ export default class StudentsController {
     const { id } = request.params;
     const { name, age, roomId } = request.body;
 
-    const studentRepository = new StudentRepository()
+    const studentRepository = new StudentRepository();
+    const roomRepository = new RoomRepository();
 
-    const updateStudentService = new UpdateStudentService(studentRepository);
+    const updateStudentService = new UpdateStudentService(studentRepository, roomRepository);
 
     const student = await updateStudentService.execute(id, { name, age, roomId });
 
