@@ -4,13 +4,17 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,UpdateDateColu
 
 @Entity()
 export class Student implements IStudent {
+  
   @PrimaryGeneratedColumn('uuid')
   id!: string;
+
+  @Column({ type: 'uuid' })
+  roomId!: string;
 
   @Column()
   name!: string;
 
-  @Column()
+  @Column({ type: 'integer' })
   age!: number;
 
   @Column()

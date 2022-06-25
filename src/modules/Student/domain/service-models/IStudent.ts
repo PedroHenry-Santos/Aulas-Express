@@ -3,6 +3,7 @@ export interface IStudent {
   name: string;
   age: number;
   hash: string;
+  roomId: string;
   createdAt: Date;
   updatedAt: Date;
 }
