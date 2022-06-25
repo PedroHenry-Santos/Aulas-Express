@@ -1,8 +1,7 @@
 export interface IRoom {
   id: string;
   name: string;
-  age: number;
-  hash: string;
+  teacherId: string;
   createdAt: Date;
   updatedAt: Date;
 }

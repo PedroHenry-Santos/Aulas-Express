@@ -14,7 +14,7 @@ export class Teacher implements ITeacher {
   age!: number;
 
   @Column()
-  hash!: string;
+  formation!: string;
 
   @CreateDateColumn()
   createdAt!: Date;

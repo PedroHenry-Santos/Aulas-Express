@@ -2,7 +2,7 @@ export interface ITeacher {
   id: string;
   name: string;
   age: number;
-  hash: string;
+  formation: string;
   createdAt: Date;
   updatedAt: Date;
 }

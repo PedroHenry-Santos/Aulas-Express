@@ -8,7 +8,8 @@ const teacherController = new TeacherController();
 routes.post('/', celebrate({
   [Segments.BODY]: {
     name: Joi.string().required(),
-    age: Joi.number().required()
+    age: Joi.number().required(),
+    formation: Joi.string().required()
   }
 }) , teacherController.create)
 routes.get('/', teacherController.index)
@@ -22,7 +23,8 @@ routes.get('/:id', celebrate({
 routes.put('/:id', celebrate({
   [Segments.BODY]: {
     name: Joi.string().optional(),
-    age: Joi.number().optional()
+    age: Joi.number().optional(),
+    formation: Joi.string().required(),
   },
   [Segments.PARAMS]: {
     id: Joi.string().uuid({

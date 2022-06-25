@@ -10,11 +10,8 @@ export class Room implements IRoom {
   @Column()
   name!: string;
 
-  @Column()
-  age!: number;
-
-  @Column()
-  hash!: string;
+  @Column({ type: 'uuid' })
+  teacherId!: string;
 
   @CreateDateColumn()
   createdAt!: Date;

@@ -30,26 +30,26 @@ export default class RoomsController {
   }
 
   public async create(request: Request, response: Response) {
-    const { name, age } = request.body;
+    const { name, teacherId } = request.body;
 
     const roomRepository = new RoomRepository()
 
     const createRoomService = new CreateRoomService(roomRepository);
 
-    const room = await createRoomService.execute({ name, age })
+    const room = await createRoomService.execute({ name, teacherId })
 
     return response.status(201).json(room);
   }
 
   public async update(request: Request, response: Response) {
     const { id } = request.params;
-    const { name, age } = request.body;
+    const { name, teacherId } = request.body;
 
     const roomRepository = new RoomRepository()
 
     const updateRoomService = new UpdateRoomService(roomRepository);
 
-    const room = await updateRoomService.execute(id, { name, age });
+    const room = await updateRoomService.execute(id, { name, teacherId });
 
     return response.status(200).json(room);
   }

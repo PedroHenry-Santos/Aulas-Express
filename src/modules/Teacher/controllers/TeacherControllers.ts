@@ -30,26 +30,26 @@ export default class TeachersController {
   }
 
   public async create(request: Request, response: Response) {
-    const { name, age } = request.body;
+    const { name, age, formation } = request.body;
 
     const teacherRepository = new TeacherRepository()
 
     const createTeacherService = new CreateTeacherService(teacherRepository);
 
-    const teacher = await createTeacherService.execute({ name, age })
+    const teacher = await createTeacherService.execute({ name, age, formation})
 
     return response.status(201).json(teacher);
   }
 
   public async update(request: Request, response: Response) {
     const { id } = request.params;
-    const { name, age } = request.body;
+    const { name, age, formation } = request.body;
 
     const teacherRepository = new TeacherRepository()
 
     const updateTeacherService = new UpdateTeacherService(teacherRepository);
 
-    const teacher = await updateTeacherService.execute(id, { name, age });
+    const teacher = await updateTeacherService.execute(id, { name, age, formation });
 
     return response.status(200).json(teacher);
   }
